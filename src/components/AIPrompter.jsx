@@ -4,8 +4,10 @@ import { useState, useEffect } from 'react';
 const AIPrompter = ({ sectionTitle, content }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [prompts, setPrompts] = useState([]);
+  const [aiCache, setAiCache] = useState({});
 
-  const fetchPrompts = async () => {
+  const fetchPrompts = async (sectionId) => {
+    if (aiCache[sectionId]) return aiCache[sectionId];
     setIsLoading(true);
     try {
       const response = await fetch('http://localhost:11434/api/generate', {
@@ -24,6 +26,18 @@ const AIPrompter = ({ sectionTitle, content }) => {
       setPrompts(["AI service unavailable - try again later"]);
     }
     setIsLoading(false);
+    setAiCache({...aiCache, [sectionId]: prompts });
+  };
+
+  const exportToMarkdown = (outline) => {
+    let md = '';
+    const traverse = (node, depth) => {
+      md += `${'#'.repeat(depth + 1)} ${node.title}\n`;
+      md += localStorage.getItem(`section-${node.id}`) + '\n\n';
+      node.children?.forEach(child => traverse(child, depth + 1));
+    };
+    traverse(outline, 0);
+    return md;
   };
 
   return (
@@ -39,4 +53,4 @@ const AIPrompter = ({ sectionTitle, content }) => {
       </div>
     </div>
   );
-}; export default AIPrompter;
+}; export default AIPrompter; 

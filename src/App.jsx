@@ -7,6 +7,10 @@ import ZettelNote from './components/ZettelNote';
 import FrameworkLibrary from './components/FrameworkLibrary';
 import  { nanoid } from 'nanoid';
 import { FRAMEWORKS } from './frameworks';
+import OutlineTree from './components/OutlineTree';
+import SectionEditor from './components/SectionEditor';
+import { updateSectionTitles } from './utils/outlineUtils';
+
 
 const DEFAULT_OUTLINE = {
   id: 'root',
@@ -75,10 +79,67 @@ function App() {
     localStorage.setItem('essayOutline', JSON.stringify(outline));
     localStorage.setItem('zettelNotes', JSON.stringify(notes));
   }, [outline, notes]);
+  
+  const handleReorder = (activeId, overId) => {
+    const reorderChildren = (nodes) => {
+      return nodes.reduce((acc, node) => {
+        if (node.id === overId) {
+          const activeNode = nodes.find(n => n.id === activeId);
+          return [...acc, activeNode, node];
+        }
+        if (node.children) {
+          return [...acc, { ...node, children: reorderChildren(node.children) }];
+        }
+        return [...acc, node];
+      }, []);
+    };
+
+    setOutline(prev => ({
+      ...prev,
+      children: reorderChildren(prev.children)
+    }));
+  };
+  
+  const [searchQuery, setSearchQuery] = useState('');
+  const filteredNotes = notes.filter(note =>
+  note.content.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="app">
+      {/* Framework Library */}
       <FrameworkLibrary onApplyFramework={applyFramework} />
       <div className='main-content'>
+        
+        <OutlineTree
+          node={outline}
+          onReorder={handleReorder}
+          onAddSection={(parentId) => {
+            // Add a section logic
+          }}
+          onEditTitle={(sectionId, newTitle) => {
+            setOutline(prev => updateSectionTitles(prev, sectionId, newTitle));
+          }}
+          />
+
+        {currentSectionId && (
+          <SectionEditor 
+            sectionId={currentSectionId}
+            notes={notes}
+            onLinkNote={(noteId) => {
+              setNotes(prev =>  prev.map(note =>
+                note.id === noteId
+                  ? { ...note, linkedTo: [...note.linkedTo, currentSectionId] }
+                  : note
+              ));
+            }}
+            onSaveContent={(sectionId, content) => {
+              localStorage.setItem(`section-${sectionId}`, content);
+            }}
+          />
+        )}
+
+
         <div className="outline-pane">
           <DndContext>
             <OutlineNode 
