@@ -55,8 +55,14 @@ Logos is built on three core intellectual traditions:
 gantt
     title Development Roadmap
     dateFormat  YYYY-MM-DD
-    section 2024
-    Collaborative Editing       :active, a1, 2024-03-01, 2024-05-30
-    Literature Review Assistant :a2, 2024-06-01, 2024-08-30
     section 2025
-    Mobile Beta                 :a3, 2025-01-01, 2025-06-30
+    Prototype                 :a3, 2025-01-01, 2025-06-30
+
+
+"Why not use ChatGPT?"
+
+🤖 ChatGPT writes for you → ThinkLab teaches you to think
+
+📚 Retain full authorship vs black-box generation
+
+🎯 Structured accountability vs chat randomness
