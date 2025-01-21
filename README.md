@@ -51,6 +51,16 @@ Logos is built on three core intellectual traditions:
 | Zettelkasten Linking  | ✅        | ✅        | ❌        | ❌         |  
 | LaTeX Support         | 🚧        | ❌        | ✅        | ❌         |  
 
+
+Why not use ChatGPT?
+
+🤖 ChatGPT writes for you → ThinkLab teaches you to think
+
+📚 Retain full authorship vs black-box generation
+
+🎯 Structured accountability vs chat randomness
+
+
 ```mermaid
 gantt
     title Development Roadmap
@@ -59,10 +69,3 @@ gantt
     Prototype                 :a3, 2025-01-01, 2025-06-30
 
 
-"Why not use ChatGPT?"
-
-🤖 ChatGPT writes for you → ThinkLab teaches you to think
-
-📚 Retain full authorship vs black-box generation
-
-🎯 Structured accountability vs chat randomness
