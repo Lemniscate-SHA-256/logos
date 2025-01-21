@@ -28,3 +28,11 @@ An intelligent writing environment that combines structured thinking methodologi
 - Socratic questioning system
 - Argument strength analysis
 - Clarity scoring system
+
+
+Feature	ThinkLab	Obsidian	Overleaf	Grammarly
+AI Thinking Prompts	✅	❌	❌	❌
+Academic Frameworks	✅	❌	❌	❌
+Zettelkasten Linking	✅	✅	❌	❌
+LaTeX Support	🚧	❌	✅	❌
+
