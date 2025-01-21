@@ -29,10 +29,34 @@ An intelligent writing environment that combines structured thinking methodologi
 - Argument strength analysis
 - Clarity scoring system
 
+## Philosophical Foundations
+Logos is built on three core intellectual traditions:
+1. **Jordan Peterson's Hierarchical Meaning**: Structured argument development through nested claims/evidence
+2. **Luhmann's Zettelkasten**: Bidirectional linking of atomic knowledge units
+3. **Socratic Method**: AI-driven questioning to expose logical gaps
 
-Feature	ThinkLab	Obsidian	Overleaf	Grammarly
-AI Thinking Prompts	✅	❌	❌	❌
-Academic Frameworks	✅	❌	❌	❌
-Zettelkasten Linking	✅	✅	❌	❌
-LaTeX Support	🚧	❌	✅	❌
+## Features
+| Category               | Capabilities                                                                 |
+|------------------------|-----------------------------------------------------------------------------|
+| 🧠 Thinking Frameworks  | Toulmin/SWOT/Peterson templates • Custom framework builder • Section prompts|
+| 🌳 Hierarchical Writing | Drag-and-drop outlining • Visual tree maps • Auto-versioning               |
+| 📚 Knowledge Management | Zettelkasten notes • Bidirectional linking • Graph visualization           |
+| 🤖 AI Collaboration     | Local LLM (Ollama) • Socratic questioning • Argument strength analysis      |
 
+## Comparative Analysis
+| Feature               | ThinkLab | Obsidian | Overleaf | Grammarly |  
+|-----------------------|----------|----------|----------|-----------|  
+| AI Thinking Prompts   | ✅        | ❌        | ❌        | ❌         |  
+| Academic Frameworks   | ✅        | ❌        | ❌        | ❌         |  
+| Zettelkasten Linking  | ✅        | ✅        | ❌        | ❌         |  
+| LaTeX Support         | 🚧        | ❌        | ✅        | ❌         |  
+
+```mermaid
+gantt
+    title Development Roadmap
+    dateFormat  YYYY-MM-DD
+    section 2024
+    Collaborative Editing       :active, a1, 2024-03-01, 2024-05-30
+    Literature Review Assistant :a2, 2024-06-01, 2024-08-30
+    section 2025
+    Mobile Beta                 :a3, 2025-01-01, 2025-06-30
